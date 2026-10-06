@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Certificate - IFRE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="site-header"></div>
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+        <h2>Verify Your Certificate</h2>
+        <p>Enter your certificate number to verify and view your award certificate</p>
+    </section>
+
+    <!-- ========== VERIFY FORM ========== -->
+    <section class="verify-section">
+        <div class="verify-box">
+            <div class="verify-icon">🔐</div>
+            <h2>Certificate Verification</h2>
+            <p>Enter the certificate number printed on your award certificate below.</p>
+
+            <form id="verifyForm">
+                <label>Certificate Number *</label>
+                <input 
+                    type="text" 
+                    id="certNumber" 
+                    placeholder="e.g., IFRE202653194" 
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit" class="btn submit-btn">Verify &amp; Open</button>
+            </form>
+
+            <div id="result"></div>
+
+            <div class="verify-help">
+                <p><strong>Format:</strong> IFRE + Year + 5 digits (e.g., IFRE202653194)</p>
+                <p>Can't find your certificate? <a href="contact.html">Contact us</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="js/layout.js"></script>
+    <script src="js/verify.js"></script>
+</body>
+</html>

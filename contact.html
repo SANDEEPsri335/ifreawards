@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - IFRE | Indian Foundation for Research & Excellence</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="site-header"></div>
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+        <h2>Contact Us</h2>
+        <p>We're here to help you with your award application</p>
+    </section>
+
+    <!-- ========== INTRO ========== -->
+    <section class="contact-intro">
+        <p>
+            Have questions about the National Academic &amp; Research Awards? Need help with your 
+            application? Reach out to us through any of the channels below.
+        </p>
+    </section>
+
+    <!-- ========== CONTACT CARDS ========== -->
+    <section class="contact-cards">
+        <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <h3>WhatsApp</h3>
+            <p>+91 9503593997</p>
+            <a href="https://wa.me/919503593997" class="btn small-btn" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h3>Email</h3>
+            <p>ifreceo@gmail.com</p>
+            <a href="mailto:ifreceo@gmail.com" class="btn small-btn">Send Email</a>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <h3>Office Address</h3>
+            <p>Nellore,<br>Andhra Pradesh, India – 524305</p>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">🕘</div>
+            <h3>Working Hours</h3>
+            <p>Monday – Friday<br>10:00 AM – 6:00 PM IST</p>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT FORM ========== -->
+    <section class="form-section">
+        <h2 class="form-title">Send Us a Message</h2>
+
+        <form id="contactForm">
+            <label>Full Name *</label>
+            <input type="text" name="name" placeholder="Enter your full name" required>
+
+            <label>Email *</label>
+            <input type="email" name="email" placeholder="you@example.com" required>
+
+            <label>Mobile Number</label>
+            <input type="tel" name="mobile" pattern="[0-9]{10}" placeholder="10-digit mobile number">
+
+            <label>Subject *</label>
+            <input type="text" name="subject" placeholder="e.g., Query about Academic Excellence Award" required>
+
+            <label>Message *</label>
+            <textarea name="message" rows="5" placeholder="Type your message here..." required></textarea>
+
+            <button type="submit" id="contactBtn" class="btn submit-btn">
+                <span class="btn-text">Send Message</span>
+                <span class="btn-loader" style="display:none;">⏳ Sending...</span>
+            </button>
+
+            <div id="contactResult"></div>
+        </form>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <!-- ========== FLOATING WHATSAPP BUTTON ========== -->
+    <a href="https://wa.me/919503593997" class="whatsapp-float" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+        💬
+    </a>
+
+    <script src="js/layout.js"></script>
+    <script>
+        // =====================================================
+        // ⚠️ SAME WEB APP URL AS APPLY PAGE
+        // =====================================================
+        const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTFXffufWiik04CUNEuxIjN2-Pq0iPbpE5DpuYOJaA65wHYS1WdP0QeNwjVGzxfQyO/exec';
+
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const btn = document.getElementById('contactBtn');
+            const btnText = btn.querySelector('.btn-text');
+            const btnLoader = btn.querySelector('.btn-loader');
+            const result = document.getElementById('contactResult');
+
+            btn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'inline';
+            result.innerHTML = '';
+
+            try {
+                const payload = {
+                    formType: 'contact',
+                    name: form.name.value,
+                    email: form.email.value,
+                    mobile: form.mobile.value,
+                    subject: form.subject.value,
+                    message: form.message.value
+                };
+
+                await fetch(CONTACT_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payload)
+                });
+
+                result.innerHTML = `
+                    <p class="success-msg" style="margin-top:15px;">
+                        ✅ Thank you! Your message has been sent to IFRE.<br>
+                        We will reply to <strong>${payload.email}</strong> shortly.
+                    </p>
+                `;
+                form.reset();
+
+            } catch (err) {
+                result.innerHTML = `
+                    <p class="error-msg" style="margin-top:15px;">
+                        ❌ Could not send. Please try again or contact us on WhatsApp.
+                    </p>
+                `;
+            } finally {
+                btn.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoader.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

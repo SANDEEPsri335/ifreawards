@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - IFRE | Award Winners & Ceremony Photos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="site-header"></div>
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+        <h2>IFRE Gallery</h2>
+        <p>Celebrating Excellence — Award Winners &amp; Ceremony Memories</p>
+    </section>
+
+    <!-- ========== INTRO ========== -->
+    <section class="gallery-intro">
+        <p>
+            Explore our award winners and memorable moments from IFRE ceremonies. 
+            Click on a section below to view the gallery.
+        </p>
+    </section>
+
+    <!-- ======================================================
+         SECTION 1: AWARD WINNERS
+    ====================================================== -->
+    <section class="gallery-category">
+        <div class="cat-toggle" onclick="toggleGallery(this)">
+            <div class="cat-toggle-text">
+                <h2>🏆 Award Winners</h2>
+                <p>Congratulations to our distinguished award recipients across India</p>
+            </div>
+            <span class="expand-icon">+</span>
+        </div>
+
+        <div class="cat-body">
+            <div class="cat-body-inner">
+
+                <div class="gallery-grid">
+
+                    <div class="gallery-item">
+                        <img src="awardwinners/winner1.jpg" alt="Award Winner 1"
+                             onerror="this.src='https://via.placeholder.com/400x500/1a237e/ffffff?text=Winner+1'">
+                        <p>Award Winner — 2026</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="awardwinners/winner2.jpg" alt="Award Winner 2"
+                             onerror="this.src='https://via.placeholder.com/400x500/3949ab/ffffff?text=Winner+2'">
+                        <p>Award Winner — 2026</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="awardwinners/winner3.jpg" alt="Award Winner 3"
+                             onerror="this.src='https://via.placeholder.com/400x500/1a237e/ffffff?text=Winner+3'">
+                        <p>Award Winner — 2026</p>
+                    </div>
+
+                    <!-- 👇 To add more winners, copy a block and change winner3 → winner4, etc. -->
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+         SECTION 2: CEREMONY PHOTOS
+    ====================================================== -->
+    <section class="gallery-category">
+        <div class="cat-toggle" onclick="toggleGallery(this)">
+            <div class="cat-toggle-text">
+                <h2>📸 Ceremony Photos</h2>
+                <p>Glimpses from IFRE award ceremonies and felicitation events</p>
+            </div>
+            <span class="expand-icon">+</span>
+        </div>
+
+        <div class="cat-body">
+            <div class="cat-body-inner">
+
+                <div class="gallery-grid">
+
+                    <div class="gallery-item">
+                        <img src="ceremony/ceremony1.jpg" alt="Ceremony Photo 1"
+                             onerror="this.src='https://via.placeholder.com/400x300/1a237e/ffffff?text=Ceremony+Photo+1'">
+                        <p>Award Ceremony</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="ceremony/ceremony2.jpg" alt="Ceremony Photo 2"
+                             onerror="this.src='https://via.placeholder.com/400x300/3949ab/ffffff?text=Ceremony+Photo+2'">
+                        <p>Felicitating Awardees</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="ceremony/ceremony3.jpg" alt="Ceremony Photo 3"
+                             onerror="this.src='https://via.placeholder.com/400x300/1a237e/ffffff?text=Ceremony+Photo+3'">
+                        <p>Certificate Distribution</p>
+                    </div>
+
+                    <!-- 👇 To add more ceremony photos, copy a block and change ceremony3 → ceremony4, etc. -->
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta">
+        <h2>Be Part of the Next Ceremony</h2>
+        <p>Apply for the National Academic &amp; Research Awards and get recognized.</p>
+        <a href="apply.html" class="btn">Apply Now</a>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="js/layout.js"></script>
+    <script>
+        // =====================================================
+        // GALLERY ACCORDION — Only one section open at a time
+        // =====================================================
+        function toggleGallery(el) {
+            const category = el.parentElement;
+            const isOpen = category.classList.contains('open');
+
+            document.querySelectorAll('.gallery-category').forEach(c => c.classList.remove('open'));
+
+            if (!isOpen) {
+                category.classList.add('open');
+            }
+        }
+    </script>
+</body>
+</html>
